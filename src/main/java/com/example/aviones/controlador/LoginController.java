@@ -69,6 +69,7 @@ public class LoginController {
                 declaracion.setString(1, user);
                 declaracion.setString(2, password);
 
+
                 try (ResultSet resultado = declaracion.executeQuery()) {
                     if (resultado.next()) {
                         // Si el resultado.next() devuelve verdadero, significa que hay un usuario con esos credenciales
