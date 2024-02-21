@@ -2,6 +2,7 @@ package com.example.aviones.modelo;
 
 import java.time.LocalDate;
 import java.sql.Time;
+import java.time.LocalTime;
 
 public class Vuelo {
 
