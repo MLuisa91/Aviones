@@ -25,10 +25,10 @@
       <VBox layoutX="81.0" layoutY="93.0" prefHeight="226.0" prefWidth="237.0" spacing="15.0">
          <children>
             <Label text="Usuario:" />
-            <TextField />
+            <TextField fx:id="txtUser" />
             <Label text="Contraseña:" />
-            <TextField prefHeight="26.0" prefWidth="389.0" />
-            <Button lineSpacing="25.0" mnemonicParsing="false" text="Aceptar" />
+            <TextField fx:id="txtPassword" prefHeight="26.0" prefWidth="389.0" />
+            <Button lineSpacing="25.0" mnemonicParsing="false" onAction="#aceptar" text="Aceptar" />
          </children>
          <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

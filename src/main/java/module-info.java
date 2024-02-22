@@ -4,8 +4,8 @@ module com.example.aviones {
     requires java.sql;
 
 
-    opens com.example.aviones to javafx.fxml;
-    exports com.example.aviones;
+    opens com.example.aviones.vista to javafx.fxml;
+    exports com.example.aviones.vista;
     exports com.example.aviones.controlador;
     opens com.example.aviones.controlador to javafx.fxml;
 }

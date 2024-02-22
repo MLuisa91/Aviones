@@ -22,15 +22,15 @@ public class LoginController {
     private Usuario usuario;
 
     @FXML
-    public void aceptar(ActionEvent event) {
+    void aceptar(ActionEvent event) {
         if (buscarAdmin(txtUser.getText(), txtPassword.getText())) {
             //Si el usuario es administrador pasamos a la siguiente pantalla
             try {
                 // Cargar la ventana de gestión de vuelos
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aviones/vista/GestionVuelos.fxml"));
-                Parent root = loader.load();
+               // FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aviones/vista/GestionVuelos.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/com/example/aviones/vista/Vuelos.fxml"));
 
-                GestionVuelosController controller = loader.getController();
+                //GestionVuelosController controller = loader.getController();
 
                 // Crear un nuevo Stage para la segunda ventana
                 Stage segundaVentana = new Stage();
