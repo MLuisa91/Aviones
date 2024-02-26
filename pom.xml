@@ -12,18 +12,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>20.0.1</version>
+            <version>11</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>20.0.1</version>
+            <version>11</version>
         </dependency>
 
         <dependency>
@@ -38,17 +39,71 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.datafx</groupId>
+            <artifactId>datafx</artifactId>
+            <version>8.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.datafx</groupId>
+            <artifactId>flow</artifactId>
+            <version>8.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-javafx</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-fontawesome5-pack</artifactId>
+            <version>2.4.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.4</version>
+                <configuration>
+                    <mainClass>demos.components.SpinnerDemo</mainClass>
+                    <options>
+                        <option>--add-opens</option>
+                        <option>javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED</option>
+                        <!--
+                            Refer : https://github.com/jfoenixadmin/JFoenix/issues/889#issuecomment-450744122
+                            In order to make jfoenix works, it should need less and doesn't need all of these.
+                            You may have to go one by one to find what - - add-opens ... you'll need in your case.
+                            - - add-opens is for enabling deep-reflection
+                            - - add-exports is for direct access
+                        -->
+
+                    </options>
+                </configuration>
+            </plugin>
+
+            <!--
+                This is to stop the IDE from complaining, it has no impact on runtime
+                Because we are using javafx:run and not the normal run.
+            -->
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>20</source>
-                    <target>20</target>
+                    <compilerArgs>
+                        <!--
+                            Refer : https://github.com/jfoenixadmin/JFoenix/issues/889#issuecomment-450744122
+                            In order to make jfoenix works, it should need less and doesn't need all of these.
+                            You may have to go one by one to find what - - add-opens ... you'll need in your case.
+                            - - add-opens is for enabling deep-reflection
+                            - - add-exports is for direct access
+                        -->
+                        <arg>--add-opens</arg><arg>javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
